@@ -1,6 +1,4 @@
-# Gravitee.io-API-Management-Tutorials
-Gravitee.io Tutorials
-
+# Gravitee.io API Management Tutorials
 Please check the [tutorials on our community forum](https://community.gravitee.io/c/tutorials).
 
 Tutorials :
