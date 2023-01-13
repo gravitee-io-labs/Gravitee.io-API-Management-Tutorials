@@ -1,1 +1,81 @@
-{"info":{"name":"Tutorial - Delete an API","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json","description":""},"item":[{"name":"Stop the API","request":{"method":"POST","url":{"raw":"{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/?action=stop","query":[{"key":"action","value":"stop"}],"variable":[],"host":["{{management_host}}"],"path":["management","organizations","DEFAULT","environments","DEFAULT","v4","apis","%7B%7Bapi%7D%7D"]}}},{"name":"Close Plan","request":{"method":"POST","url":{"raw":"{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans/{{plan}}/_close","host":["{{management_host}}"],"path":["management","organizations","DEFAULT","environments","DEFAULT","v4","apis","%7B%7Bapi%7D%7D","plans","%7B%7Bplan%7D%7D","_close"]}}},{"name":"Delete API","request":{"method":"DELETE","url":{"raw":"{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}","host":["{{management_host}}"],"path":["management","organizations","DEFAULT","environments","DEFAULT","v4","apis","%7B%7Bapi%7D%7D"]}}}],"auth":{"type":"basic","basic":{"username":"{{management_username}}","password":"{{management_password}}"}}}
+{
+  "info": {
+    "name": "Tutorial - Delete an API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": ""
+  },
+  "item": [
+    {
+      "name": "Stop the API",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/?action=stop",
+          "query": [{ "key": "action", "value": "stop" }],
+          "variable": [],
+          "host": ["{{management_host}}"],
+          "path": [
+            "management",
+            "organizations",
+            "DEFAULT",
+            "environments",
+            "DEFAULT",
+            "v4",
+            "apis",
+            "%7B%7Bapi%7D%7D"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Close Plan",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans/{{plan}}/_close",
+          "host": ["{{management_host}}"],
+          "path": [
+            "management",
+            "organizations",
+            "DEFAULT",
+            "environments",
+            "DEFAULT",
+            "v4",
+            "apis",
+            "%7B%7Bapi%7D%7D",
+            "plans",
+            "%7B%7Bplan%7D%7D",
+            "_close"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete API",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+          "host": ["{{management_host}}"],
+          "path": [
+            "management",
+            "organizations",
+            "DEFAULT",
+            "environments",
+            "DEFAULT",
+            "v4",
+            "apis",
+            "%7B%7Bapi%7D%7D"
+          ]
+        }
+      }
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": {
+      "username": "{{management_username}}",
+      "password": "{{management_password}}"
+    }
+  }
+}
