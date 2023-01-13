@@ -37,7 +37,7 @@
       "response": []
     },
     {
-      "name": "Create an Open (keyless) plan",
+      "name": "Create an Open (keyless) Plan",
       "request": {
         "method": "POST",
         "header": [],
@@ -97,7 +97,7 @@
       "response": []
     },
     {
-      "name": "Push data",
+      "name": "Push Data",
       "request": {
         "method": "POST",
         "header": [],
