@@ -1,0 +1,157 @@
+{
+  "info": {
+    "_postman_id": "d40044fd-5b0a-45e9-a1da-b793413f5f79",
+    "name": "3.20 - POST to MQTT",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "25274965"
+  },
+  "item": [
+    {
+      "name": "Create the API",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Demo of HTTP Post + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP Post + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
+          "host": ["{{management_host}}"],
+          "path": [
+            "management",
+            "organizations",
+            "DEFAULT",
+            "environments",
+            "DEFAULT",
+            "v4",
+            "apis"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create an Open (keyless) plan",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Open\",\n    \"description\": \"Keyless\",\n    \"status\": \"PUBLISHED\",\n    \"characteristics\": [],\n    \"security\": {\n        \"type\": \"key-less\"\n    },\n    \"flows\": [\n        {\n            \"name\": \"All requests\",\n            \"selectors\": [\n                {\n                    \"type\": \"channel\",\n                    \"entrypoints\": [\n                        \"http-post\"\n                    ]\n                }\n            ],\n            \"request\": [\n                {\n                    \"name\": \"Rate Limiting\",\n                    \"description\": \"Rate limit\",\n                    \"policy\": \"rate-limit\",\n                    \"configuration\": {\n                        \"addHeaders\": true,\n                        \"rate\": {\n                            \"limit\": 1,\n                            \"periodTime\": 2,\n                            \"periodTimeUnit\": \"SECONDS\"\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/%7B%7Bapi%7D%7D/plans",
+          "host": ["{{management_host}}"],
+          "path": [
+            "management",
+            "organizations",
+            "DEFAULT",
+            "environments",
+            "DEFAULT",
+            "v4",
+            "apis",
+            "%7B%7Bapi%7D%7D",
+            "plans"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Start the API",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/%7B%7Bapi%7D%7D?action=start",
+          "host": ["{{management_host}}"],
+          "path": [
+            "management",
+            "organizations",
+            "DEFAULT",
+            "environments",
+            "DEFAULT",
+            "v4",
+            "apis",
+            "%7B%7Bapi%7D%7D"
+          ],
+          "query": [
+            {
+              "key": "action",
+              "value": "start"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Push data",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"deviceId\": \"12341234\",\n    \"sensorValue\": \"24\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{gateway_host}}/demo/mqtt",
+          "host": ["{{gateway_host}}"],
+          "path": ["demo", "mqtt"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "password",
+        "value": "{{management_password}}",
+        "type": "string"
+      },
+      {
+        "key": "username",
+        "value": "{{management_username}}",
+        "type": "string"
+      },
+      {
+        "key": "undefined",
+        "type": "any"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ]
+}

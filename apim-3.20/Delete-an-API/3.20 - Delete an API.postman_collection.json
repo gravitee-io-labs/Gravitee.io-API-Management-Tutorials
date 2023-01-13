@@ -1,18 +1,18 @@
 {
   "info": {
-    "name": "Tutorial - Delete an API",
+    "_postman_id": "7a3e8130-a2ee-47f5-98cd-45449347302f",
+    "name": "3.20 - Delete an API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": ""
+    "_exporter_id": "25274965"
   },
   "item": [
     {
       "name": "Stop the API",
       "request": {
         "method": "POST",
+        "header": [],
         "url": {
-          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/?action=stop",
-          "query": [{ "key": "action", "value": "stop" }],
-          "variable": [],
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/%7B%7Bapi%7D%7D?action=stop",
           "host": ["{{management_host}}"],
           "path": [
             "management",
@@ -23,16 +23,24 @@
             "v4",
             "apis",
             "%7B%7Bapi%7D%7D"
+          ],
+          "query": [
+            {
+              "key": "action",
+              "value": "stop"
+            }
           ]
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Close Plan",
       "request": {
         "method": "POST",
+        "header": [],
         "url": {
-          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans/{{plan}}/_close",
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/%7B%7Bapi%7D%7D/plans/%7B%7Bplan%7D%7D/_close",
           "host": ["{{management_host}}"],
           "path": [
             "management",
@@ -48,14 +56,16 @@
             "_close"
           ]
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Delete API",
       "request": {
         "method": "DELETE",
+        "header": [],
         "url": {
-          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/%7B%7Bapi%7D%7D",
           "host": ["{{management_host}}"],
           "path": [
             "management",
@@ -68,14 +78,43 @@
             "%7B%7Bapi%7D%7D"
           ]
         }
-      }
+      },
+      "response": []
     }
   ],
   "auth": {
     "type": "basic",
-    "basic": {
-      "username": "{{management_username}}",
-      "password": "{{management_password}}"
+    "basic": [
+      {
+        "key": "password",
+        "value": "{{management_password}}",
+        "type": "string"
+      },
+      {
+        "key": "username",
+        "value": "{{management_username}}",
+        "type": "string"
+      },
+      {
+        "key": "undefined",
+        "type": "any"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
     }
-  }
+  ]
 }
