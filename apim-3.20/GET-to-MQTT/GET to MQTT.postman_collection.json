@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "0642fed2-2799-4577-9471-a0e48fd720cf",
+    "_postman_id": "c9623de9-bd0f-42aa-b871-9722ad13384c",
     "name": "3.20 - GET to MQTT",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "25274965"
@@ -9,8 +9,17 @@
     {
       "name": "Create the API",
       "request": {
-        "method": "GET",
+        "method": "POST",
         "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Demo of HTTP Post + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP Post + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 1,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
         "url": {
           "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis",
           "host": ["{{management_host}}"],
@@ -88,6 +97,17 @@
       "response": []
     },
     {
+      "name": "Create Topic",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{gateway_host}}/demo/mqtt",
+          "host": ["{{gateway_host}}"],
+          "path": ["demo", "mqtt"]
+        }
+      }
+    },
+    {
       "name": "Get data",
       "request": {
         "method": "GET",
@@ -129,7 +149,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{   \"id\": \"00067aa9-b333-4329-867a-a9b333332964\",\n    \"name\": \"Demo of HTTP GET + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP GET + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
+          "raw": "{   \"id\": \"{{api}}\",\n    \"name\": \"Demo of HTTP GET + MQTT\",\n    \"apiVersion\": \"1.0.0\",\n    \"definitionVersion\": \"4.0.0\",\n    \"type\": \"async\",\n    \"description\": \"Demo of HTTP GET + MQTT\",\n    \"visibility\": \"PUBLIC\",\n    \"listeners\": [\n        {\n            \"type\": \"http\",\n            \"cors\": {\n                \"enabled\": true,\n                \"allowOrigin\": [\n                    \"*\"\n                ],\n                \"allowHeaders\": [\n                    \"X-Gravitee-Api-Key\"\n                ],\n                \"allowMethods\": [\n                    \"GET\",\n                    \"POST\",\n                    \"OPTIONS\"\n                ],\n                \"exposeHeaders\": [\n                    \"X-Rate-Limit-Limit\",\n                    \"X-Rate-Limit-Remaining\",\n                    \"X-Rate-Limit-Reset\"\n                ]\n            },\n            \"paths\": [\n                {\n                    \"path\": \"/demo/mqtt\"\n                }\n            ],\n            \"entrypoints\": [\n                {\n                    \"type\": \"http-post\"\n                },\n                {\n                    \"type\": \"http-get\",\n                    \"configuration\": {\n                        \"messagesLimitCount\": 100,\n                        \"messagesLimitDurationMs\": 10000,\n                        \"headersInPayload\": false,\n                        \"metadataInPayload\": false\n                    }\n                }\n            ]\n        }\n    ],\n    \"endpointGroups\": [\n        {\n            \"name\": \"default\",\n            \"type\": \"mqtt5\",\n            \"endpoints\": [\n                {\n                    \"name\": \"HiveMQ Broker\",\n                    \"type\": \"mqtt5\",\n                    \"weight\": 1,\n                    \"inheritConfiguration\": false,\n                    \"configuration\": {\n                        \"serverHost\": \"hivemq\",\n                        \"serverPort\": \"1883\",\n                        \"topic\": \"demo\",\n                        \"consumer\" : {\n                            \"enabled\": true\n                        },\n                        \"producer\": {\n                            \"enabled\": true\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -157,6 +177,16 @@
   "auth": {
     "type": "basic",
     "basic": [
+      {
+        "key": "password",
+        "value": "{{management_password}}",
+        "type": "string"
+      },
+      {
+        "key": "username",
+        "value": "{{management_username}}",
+        "type": "string"
+      },
       {
         "key": "undefined",
         "type": "any"
