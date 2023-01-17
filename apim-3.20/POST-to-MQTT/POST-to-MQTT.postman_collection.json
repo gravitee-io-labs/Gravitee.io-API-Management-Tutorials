@@ -51,7 +51,7 @@
           }
         },
         "url": {
-          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/%7B%7Bapi%7D%7D/plans",
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans",
           "host": ["{{management_host}}"],
           "path": [
             "management",
@@ -61,7 +61,7 @@
             "DEFAULT",
             "v4",
             "apis",
-            "%7B%7Bapi%7D%7D",
+            "{{api}}",
             "plans"
           ]
         }
@@ -74,7 +74,7 @@
         "method": "POST",
         "header": [],
         "url": {
-          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/%7B%7Bapi%7D%7D?action=start",
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=start",
           "host": ["{{management_host}}"],
           "path": [
             "management",
@@ -84,7 +84,7 @@
             "DEFAULT",
             "v4",
             "apis",
-            "%7B%7Bapi%7D%7D"
+            "{{api}}"
           ],
           "query": [
             {

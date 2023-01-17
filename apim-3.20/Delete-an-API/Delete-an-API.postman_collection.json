@@ -12,7 +12,7 @@
         "method": "POST",
         "header": [],
         "url": {
-          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/%7B%7Bapi%7D%7D?action=stop",
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}?action=stop",
           "host": ["{{management_host}}"],
           "path": [
             "management",
@@ -22,7 +22,7 @@
             "DEFAULT",
             "v4",
             "apis",
-            "%7B%7Bapi%7D%7D"
+            "{{api}}"
           ],
           "query": [
             {
@@ -40,7 +40,7 @@
         "method": "POST",
         "header": [],
         "url": {
-          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/%7B%7Bapi%7D%7D/plans/%7B%7Bplan%7D%7D/_close",
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}/plans/{{plan}}/_close",
           "host": ["{{management_host}}"],
           "path": [
             "management",
@@ -50,9 +50,9 @@
             "DEFAULT",
             "v4",
             "apis",
-            "%7B%7Bapi%7D%7D",
+            "{{api}}",
             "plans",
-            "%7B%7Bplan%7D%7D",
+            "{{plan}}",
             "_close"
           ]
         }
@@ -65,7 +65,7 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/%7B%7Bapi%7D%7D",
+          "raw": "{{management_host}}/management/organizations/DEFAULT/environments/DEFAULT/v4/apis/{{api}}",
           "host": ["{{management_host}}"],
           "path": [
             "management",
@@ -75,7 +75,7 @@
             "DEFAULT",
             "v4",
             "apis",
-            "%7B%7Bapi%7D%7D"
+            "{{api}}"
           ]
         }
       },
