@@ -1,69 +1,26 @@
 {
-  "id": "b066e1a2-0730-4241-a46f-834e29d6f9c6",
   "name": "Tutorial - APIM 3.20 Environment",
+  "id": "4258d27f-8e11-4f8c-9f53-4066e599bb3b",
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2023-01-19T16:49:53.950Z",
+  "_postman_exported_using": "Thunder Client",
   "values": [
+    { "key": "management_host", "value": "http://localhost:8083", "enabled": true },
+    { "key": "gateway_host", "value": "http://localhost:8082", "enabled": true },
+    { "key": "management_username", "value": "admin", "enabled": true },
+    { "key": "management_password", "value": "admin", "enabled": true },
+    { "key": "api", "value": "", "enabled": true },
+    { "key": "plan", "value": "", "enabled": true },
     {
-      "key": "management_host",
-      "value": "http://localhost:8083",
-      "type": "default",
-      "enabled": true
-    },
-    {
-      "key": "gateway_host",
-      "value": "http://localhost:8082",
-      "type": "default",
-      "enabled": true
-    },
-    {
-      "key": "management_username",
-      "value": "admin",
-      "type": "default",
-      "enabled": true
-    },
-    {
-      "key": "management_password",
-      "value": "admin",
-      "type": "secret",
-      "enabled": true
-    },
-    {
-      "key": "api",
+      "key": "subscription",
       "value": "",
-      "type": "any",
-      "enabled": true
-    },
-    {
-      "key": "plan",
-      "value": "",
-      "type": "any",
       "enabled": true
     },
     {
       "key": "application",
       "value": "",
-      "type": "any",
       "enabled": true
     },
-    {
-      "key": "subscription",
-      "value": "",
-      "type": "any",
-      "enabled": true
-    },
-    {
-      "key": "app",
-      "value": "",
-      "type": "any",
-      "enabled": true
-    },
-    {
-      "key": "apikey",
-      "value": "",
-      "type": "any",
-      "enabled": true
-    }
-  ],
-  "_postman_variable_scope": "environment",
-  "_postman_exported_at": "2023-01-10T17:30:02.310Z",
-  "_postman_exported_using": "Postman/10.5.8"
+    { "key": "callback-url", "value": "", "enabled": true }
+  ]
 }
